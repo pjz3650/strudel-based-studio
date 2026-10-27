@@ -1,0 +1,11 @@
+node_modules/
+upstream/
+dist/
+release/
+test-results/
+playwright-report/
+.test-data/
+*.log
+.env*
+!.env.example
+.impeccable/mocks/
