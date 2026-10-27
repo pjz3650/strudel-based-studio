@@ -61,3 +61,7 @@ Binários finais:
 - Offline foi verificado pelo contexto do Chromium e pela execução de assets locais, sem dependências HTTP do motor básico; não foi desligada fisicamente a rede do Windows.
 - Não foram feitos testes de duração longa, medição de latência externa ou comparação auditiva com hardware.
 - Testes locais não certificam automaticamente o workflow no GitHub ou todas as versões do Windows.
+
+## CI remota
+
+A execução inicial `40452791128` aprovou instalação, tipos, os 28 testes unitários, build e os cinco fluxos Electron no runner Windows. Também gerou NSIS e portátil, mas o passo terminou com erro porque o electron-builder tentou publicar automaticamente sem `GH_TOKEN`. Os scripts `dist` e `pack` foram corrigidos para usar `--publish never`: a CI gera artefatos e não precisa de permissão para publicar releases. A correção não altera o runtime ou os binários locais já testados.
