@@ -1,0 +1,61 @@
+{
+  "name": "live-studio",
+  "version": "0.1.0",
+  "description": "Estúdio desktop de live coding musical com Strudel",
+  "private": true,
+  "type": "module",
+  "main": "dist/electron/main.cjs",
+  "license": "AGPL-3.0-or-later",
+  "author": "Live Studio contributors",
+  "repository": "https://github.com/pjz3650/strudel-based-studio",
+  "packageManager": "pnpm@10.15.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "start": "electron .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "tsc --noEmit && vitest run",
+    "dist": "pnpm build && electron-builder --win nsis portable",
+    "pack": "pnpm build && electron-builder --win --dir"
+  },
+  "dependencies": {
+    "@strudel/core": "1.2.6",
+    "@strudel/mini": "1.2.6",
+    "@strudel/tonal": "1.2.6",
+    "@strudel/transpiler": "1.2.6",
+    "@strudel/webaudio": "1.3.0",
+    "@strudel/midi": "1.3.0",
+    "@strudel/draw": "1.2.6",
+    "@codemirror/autocomplete": "6.18.4",
+    "@codemirror/commands": "6.8.0",
+    "@codemirror/lang-javascript": "6.2.2",
+    "@codemirror/language": "6.10.8",
+    "@codemirror/state": "6.5.2",
+    "@codemirror/view": "6.36.5",
+    "@lezer/highlight": "1.2.1",
+    "lucide": "0.468.0",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.51.1",
+    "@types/node": "22.13.10",
+    "electron": "45.0.0",
+    "electron-builder": "26.0.12",
+    "esbuild": "0.25.1",
+    "typescript": "5.8.2",
+    "vite": "6.2.6",
+    "vitest": "3.0.9"
+  },
+  "build": {
+    "appId": "org.live-studio.desktop",
+    "productName": "Live Studio",
+    "directories": { "output": "release" },
+    "files": ["dist/**/*", "LICENSE", "THIRD_PARTY_NOTICES.md", "package.json"],
+    "asar": true,
+    "win": { "target": ["nsis", "portable"], "icon": "assets/icon.ico", "signAndEditExecutable": false },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true },
+    "artifactName": "Live-Studio-${version}-${arch}-${target}.${ext}"
+  }
+}
