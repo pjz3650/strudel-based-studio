@@ -24,6 +24,8 @@ pnpm dist
 
 `pack` gera `release/win-unpacked/Live Studio.exe`. `dist` gera também:
 
+Os dois comandos usam `--publish never`: gerar pacotes não envia binários automaticamente para o GitHub, inclusive em CI. A publicação de uma release é uma operação separada.
+
 - `release/Live-Studio-0.1.0-x64-setup.exe`
 - `release/Live-Studio-0.1.0-x64-portable.exe`
 
