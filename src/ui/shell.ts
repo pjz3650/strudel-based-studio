@@ -20,7 +20,7 @@ export function renderShell() {
       <div class="search">${icon('search')}<input id="library-search" type="search" placeholder="Buscar na biblioteca" aria-label="Buscar na biblioteca"></div>
       <nav id="library-nav" aria-label="Seções da biblioteca">
         <button data-library="files">${icon('files')}Arquivos da sessão</button>
-        <button data-library="samples">${icon('folder-music')}Samples locais</button>
+        <button data-library="samples">${icon('music-2')}Samples locais</button>
         <button data-library="instruments" aria-pressed="true">${icon('piano')}Instrumentos</button>
         <button data-library="presets">${icon('sliders-horizontal')}Presets</button>
         <button data-library="favorites">${icon('star')}Favoritos</button>

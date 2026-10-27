@@ -1,3 +1,7 @@
 import type { StudioBridge } from '../shared/schema';
-declare global { interface Window { studio: StudioBridge; } }
+declare global {
+  interface Window {
+    studio: StudioBridge;
+  }
+}
 export {};

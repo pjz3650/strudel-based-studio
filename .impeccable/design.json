@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T04:44:47Z",
+  "title": "Design System: Live Studio",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Ciano" },
+      "purple": { "role": "secondary", "displayName": "Violeta" },
+      "green": { "role": "tertiary", "displayName": "Verde" },
+      "danger": { "role": "error", "displayName": "Rosa de erro" }
+    },
+    "typographyMeta": {
+      "body": { "displayName": "Interface", "purpose": "Texto geral, botões e campos." },
+      "title": { "displayName": "Título de painel", "purpose": "Hierarquia compacta dos painéis." },
+      "label": { "displayName": "Metadados", "purpose": "Legendas, rodapés e informações auxiliares." },
+      "code": { "displayName": "Editor", "purpose": "Código musical com família monoespaçada local." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "button-state", "value": "background .12s, color .12s", "purpose": "Transição dos botões; removida com prefers-reduced-motion: reduce." },
+      { "name": "meter-width", "value": "width .05s", "purpose": "Atualização dos medidores de áudio; removida com prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "compact-desktop", "value": "1200px" },
+      { "name": "overlay-inspector", "value": "1000px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Confirmação de ações em diálogos.",
+      "html": "<button class=\"ds-primary\">Confirmar</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:13px var(--ui-font,system-ui,sans-serif);min-height:32px;padding:6px 9px;border:1px solid transparent;border-radius:var(--radius,5px);background:var(--accent,#22D3EE);color:var(--bg,#0B1220);cursor:pointer;transition:background .12s,color .12s}.ds-primary:hover{filter:brightness(1.12);background:var(--accent,#22D3EE)}.ds-primary:active{background:var(--selection,#22d3ee26)}.ds-primary:focus-visible{outline:2px solid var(--accent,#22D3EE);outline-offset:-2px}.ds-primary:disabled{opacity:.45;cursor:wait}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none!important}}"
+    },
+    {
+      "name": "Botão comum",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Ação sem preenchimento de destaque, como os controles da barra de estado.",
+      "html": "<button class=\"ds-ghost\">Instrumento</button>",
+      "css": ".ds-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:13px var(--ui-font,system-ui,sans-serif);min-height:32px;padding:6px 9px;border:1px solid transparent;border-radius:var(--radius,5px);background:transparent;color:var(--text,#F8FAFC);cursor:pointer;transition:background .12s,color .12s}.ds-ghost:hover{background:var(--hover,#ffffff08)}.ds-ghost:active{background:var(--selection,#22d3ee26)}.ds-ghost:focus-visible{outline:2px solid var(--accent,#22D3EE);outline-offset:-2px}.ds-ghost:disabled{opacity:.45;cursor:wait}@media(prefers-reduced-motion:reduce){.ds-ghost{transition:none!important}}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Entrada textual usada nos diálogos.",
+      "html": "<input class=\"ds-input\" aria-label=\"Nome do projeto\" value=\"Nova sessão\">",
+      "css": ".ds-input{font:13px var(--ui-font,system-ui,sans-serif);min-width:0;background:var(--bg,#0B1220);color:var(--text,#F8FAFC);border:1px solid var(--border,#334155);border-radius:var(--radius,5px);padding:7px 9px}.ds-input:focus-visible{outline:2px solid var(--accent,#22D3EE);outline-offset:-2px}.ds-input::selection{background:var(--selection,#22d3ee26);color:var(--text,#F8FAFC)}"
+    },
+    {
+      "name": "Navegação da biblioteca",
+      "kind": "nav",
+      "refersTo": "library-navigation-active",
+      "description": "Item selecionado da navegação lateral da biblioteca.",
+      "html": "<nav class=\"ds-library-nav\" aria-label=\"Seções da biblioteca\"><button class=\"ds-library-item\" aria-pressed=\"true\">Instrumentos</button><button class=\"ds-library-item\" aria-pressed=\"false\">Presets</button></nav>",
+      "css": ".ds-library-nav{display:flex;flex-direction:column;gap:2px;padding:0 10px 17px;border-bottom:1px solid var(--border,#334155)}.ds-library-item{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;font:12px var(--ui-font,system-ui,sans-serif);min-height:32px;padding:8px 10px;border:1px solid transparent;border-radius:var(--radius,5px);background:transparent;color:var(--muted,#a4b2c6);cursor:pointer;transition:background .12s,color .12s}.ds-library-item:hover{background:var(--hover,#ffffff08)}.ds-library-item:active{background:var(--selection,#22d3ee26)}.ds-library-item[aria-pressed=true]{background:var(--selection,#22d3ee26);color:var(--accent,#22D3EE)}.ds-library-item:focus-visible{outline:2px solid var(--accent,#22D3EE);outline-offset:-2px}@media(prefers-reduced-motion:reduce){.ds-library-item{transition:none!important}}"
+    },
+    {
+      "name": "Abas de arquivo",
+      "kind": "nav",
+      "refersTo": "file-tab-active",
+      "description": "Seleção de arquivos no cabeçalho do editor.",
+      "html": "<div class=\"ds-file-tabs\" role=\"tablist\" aria-label=\"Arquivos do projeto\"><button class=\"ds-file-tab\" role=\"tab\" aria-selected=\"true\">padrão.js</button><button class=\"ds-file-tab\" role=\"tab\" aria-selected=\"false\">baixo.js</button></div>",
+      "css": ".ds-file-tabs{display:flex;align-items:center;overflow:auto;background:var(--surface,#121c2c)}.ds-file-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:12px var(--ui-font,system-ui,sans-serif);height:42px;min-height:32px;padding:0 18px;border:1px solid transparent;border-right:1px solid var(--border,#334155);border-radius:0;background:transparent;color:var(--muted,#a4b2c6);white-space:nowrap;cursor:pointer;transition:background .12s,color .12s}.ds-file-tab:hover{background:var(--hover,#ffffff08)}.ds-file-tab:active{background:var(--selection,#22d3ee26)}.ds-file-tab[aria-selected=true]{background:var(--bg,#0B1220);color:var(--text,#F8FAFC);border-bottom:2px solid var(--accent,#22D3EE)}.ds-file-tab:focus-visible{outline:2px solid var(--accent,#22D3EE);outline-offset:-2px}@media(prefers-reduced-motion:reduce){.ds-file-tab{transition:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Interface DAW",
+    "overview": "Interface escura e densa para edição e execução musical. O editor ocupa a área central, acompanhado por biblioteca, transporte, visualizações, console e controles de instrumento. A organização segue o compromisso de interface DAW registrado em PRODUCT.md.\n\nA hierarquia depende de superfícies, divisórias e estados de controles. Acentos identificam interação, sintaxe e sinal de áudio. Os textos da interface usam português brasileiro.",
+    "keyCharacteristics": [
+      "Editor central predominante.",
+      "Painéis compactos separados por bordas.",
+      "Ciano, violeta e verde com funções identificáveis.",
+      "Tipografia de sistema na interface e monoespaçada no código."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preservar o editor central e a organização em painéis de DAW.",
+      "Do usar os tokens existentes para manter os papéis de cor nos dois temas.",
+      "Do manter foco visível e diferenciar seleção, reprodução e erro.",
+      "Do usar Fira Code no código e nas leituras numéricas já monoespaçadas."
+    ],
+    "donts": [
+      "Don't transformar estados de áudio ou dispositivo em decoração sem dados reais.",
+      "Don't substituir os estados de seleção e erro por cores sem relação com os tokens.",
+      "Don't aplicar transições quando a preferência por movimento reduzido estiver ativa."
+    ]
+  }
+}

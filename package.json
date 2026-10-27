@@ -9,7 +9,9 @@
   "author": "Live Studio contributors",
   "repository": "https://github.com/pjz3650/strudel-based-studio",
   "packageManager": "pnpm@10.15.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "tsc --noEmit && node scripts/build.mjs",
@@ -21,13 +23,6 @@
     "pack": "pnpm build && electron-builder --win --dir"
   },
   "dependencies": {
-    "@strudel/core": "1.2.6",
-    "@strudel/mini": "1.2.6",
-    "@strudel/tonal": "1.2.6",
-    "@strudel/transpiler": "1.2.6",
-    "@strudel/webaudio": "1.3.0",
-    "@strudel/midi": "1.3.0",
-    "@strudel/draw": "1.2.6",
     "@codemirror/autocomplete": "6.18.4",
     "@codemirror/commands": "6.8.0",
     "@codemirror/lang-javascript": "6.2.2",
@@ -35,6 +30,13 @@
     "@codemirror/state": "6.5.2",
     "@codemirror/view": "6.36.5",
     "@lezer/highlight": "1.2.1",
+    "@strudel/core": "1.2.6",
+    "@strudel/draw": "1.2.6",
+    "@strudel/midi": "1.3.0",
+    "@strudel/mini": "1.2.6",
+    "@strudel/tonal": "1.2.6",
+    "@strudel/transpiler": "1.2.6",
+    "@strudel/webaudio": "1.3.0",
     "lucide": "0.468.0",
     "zod": "3.24.2"
   },
@@ -44,6 +46,7 @@
     "electron": "45.0.0",
     "electron-builder": "26.0.12",
     "esbuild": "0.25.1",
+    "rcedit": "5.0.2",
     "typescript": "5.8.2",
     "vite": "6.2.6",
     "vitest": "3.0.9"
@@ -51,11 +54,37 @@
   "build": {
     "appId": "org.live-studio.desktop",
     "productName": "Live Studio",
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "LICENSE", "THIRD_PARTY_NOTICES.md", "package.json"],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "assets/icon.ico",
+      "assets/fonts/LICENSE.txt",
+      "LICENSE",
+      "LICENSE.initial-MIT",
+      "THIRD_PARTY_NOTICES.md",
+      "package.json"
+    ],
     "asar": true,
-    "win": { "target": ["nsis", "portable"], "icon": "assets/icon.ico", "signAndEditExecutable": false },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true },
-    "artifactName": "Live-Studio-${version}-${arch}-${target}.${ext}"
+    "afterPack": "scripts/after-pack.cjs",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "artifactName": "Live-Studio-${version}-${arch}-setup.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "portable": {
+      "artifactName": "Live-Studio-${version}-${arch}-portable.${ext}"
+    }
   }
 }
